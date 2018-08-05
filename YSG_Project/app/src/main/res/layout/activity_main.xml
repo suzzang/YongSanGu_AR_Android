@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/map_sook"
+            android:background="#bcbcbc"
+            android:gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="숙명여대"
+            android:textColor="#000000"/>
+        <TextView
+            android:id="@+id/map_hyo"
+            android:layout_alignParentRight="true"
+            android:background="#bcbcbc"
+            android:gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="효창공원"
+            android:textColor="#000000"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
