@@ -42,12 +42,9 @@ public class MyCameraPreview extends SurfaceView implements SurfaceHolder.Callba
     private int mCameraID;
 
     public Activity act;
-    public ImageView bgr;
-    public Bitmap bit;
     private Camera mCamera;
     private Camera.CameraInfo mCameraInfo;
 
-    public int save_flag = 0;
 
     private int mDisplayOrientation;
 
@@ -181,15 +178,12 @@ public class MyCameraPreview extends SurfaceView implements SurfaceHolder.Callba
     /**
      *  이미지 캡처
      */
-    public void takePicture(Activity activity,int flag,Bitmap btm){
+    public void takePicture(Activity activity){
         this.act = activity;
-        this.save_flag = flag;
-        this.bit = btm;
+
         mCamera.takePicture(shutterCallback, rawCallback, jpegCallback);
     }
-    public Bitmap giveBitmap(){
-        return bit;
-    }
+
 
     /**
      *  이미지 캡처 시 배경 선택
@@ -262,11 +256,6 @@ public class MyCameraPreview extends SurfaceView implements SurfaceHolder.Callba
 
                 }
 
-                //bitmap 을  byte array 로 변환
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-                byte[] currentData = stream.toByteArray();
-
 //            bgr.setImageBitmap(bitmap);//딱 캡쳐만 하는 부분
 
                 DisplayMetrics displayMetrics = act.getApplicationContext().getResources().getDisplayMetrics();
@@ -283,77 +272,10 @@ public class MyCameraPreview extends SurfaceView implements SurfaceHolder.Callba
                 camera_image_dialog.show();
 
 
-               // new MyCameraPreview.SaveImageTask().execute(currentData);
-
-
-
-
 
         }
     };
 
-
-
-
-
-
-
-/**
-     * 이미지 저장을 위한 콜백 클래스
-     */
-    private class SaveImageTask extends AsyncTask<byte[], Void, Void> {
-
-        @Override
-        protected Void doInBackground(byte[]... data) {
-            FileOutputStream outStream = null;
-
-            try {
-
-                File path = new File (Environment.getExternalStorageDirectory().getAbsolutePath() + "/camtest");
-                if (!path.exists()) {
-                    path.mkdirs();
-                }
-
-                String fileName = String.format("%d.jpg", System.currentTimeMillis());
-                File outputFile = new File(path, fileName);
-
-                outStream = new FileOutputStream(outputFile);
-                outStream.write(data[0]);
-                outStream.flush();
-                outStream.close();
-
-                Log.d(TAG, "onPictureTaken - wrote bytes: " + data.length + " to "
-                        + outputFile.getAbsolutePath());
-
-
-                mCamera.startPreview();
-
-
-                // 갤러리에 반영
-                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                mediaScanIntent.setData(Uri.fromFile(outputFile));
-                getContext().sendBroadcast(mediaScanIntent);
-
-
-                try {
-                    mCamera.setPreviewDisplay(mHolder);
-                    mCamera.startPreview();
-                    Log.d(TAG, "Camera preview started.");
-                } catch (Exception e) {
-                    Log.d(TAG, "Error starting camera preview: " + e.getMessage());
-                }
-
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-    }
 
 
 }

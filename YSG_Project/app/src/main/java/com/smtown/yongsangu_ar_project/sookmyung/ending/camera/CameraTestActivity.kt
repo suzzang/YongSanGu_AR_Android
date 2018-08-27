@@ -39,9 +39,8 @@ class CameraTestActivity:AppCompatActivity() {
     setContentView(R.layout.activity_camera_test)
 
         btnCapture.setOnClickListener {
-            val imgview : ImageView= findViewById<ImageView>(R.id.ivFrameSet)
             myCameraPreview?.setFrameId(R.drawable.camerabgr)
-            myCameraPreview?.takePicture(this,0,null)
+            myCameraPreview?.takePicture(this)
 
 
         }
