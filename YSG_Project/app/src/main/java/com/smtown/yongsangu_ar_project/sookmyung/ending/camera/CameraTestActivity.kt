@@ -2,6 +2,7 @@ package com.smtown.yongsangu_ar_project.sookmyung.ending.camera
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.hardware.Camera
 import android.media.Image
 import android.os.Build
@@ -13,6 +14,7 @@ import android.util.Log
 import android.view.WindowManager
 import android.widget.ImageView
 import com.smtown.yongsangu_ar_project.R
+import com.smtown.yongsangu_ar_project.sookmyung.ending.camera.dialog.CameraImageDialog
 import kotlinx.android.synthetic.main.activity_ar.*
 import kotlinx.android.synthetic.main.activity_camera_test.*
 
@@ -39,9 +41,7 @@ class CameraTestActivity:AppCompatActivity() {
         btnCapture.setOnClickListener {
             val imgview : ImageView= findViewById<ImageView>(R.id.ivFrameSet)
             myCameraPreview?.setFrameId(R.drawable.camerabgr)
-            myCameraPreview?.takePicture(imgview)
-
-
+            myCameraPreview?.takePicture(this,0,null)
 
 
         }

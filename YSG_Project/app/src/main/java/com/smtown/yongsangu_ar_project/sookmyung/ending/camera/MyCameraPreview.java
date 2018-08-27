@@ -12,12 +12,19 @@ import android.hardware.Camera;
 import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
+import android.support.annotation.RequiresApi;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.smtown.yongsangu_ar_project.sookmyung.ending.camera.dialog.CameraImageDialog;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -34,9 +41,13 @@ public class MyCameraPreview extends SurfaceView implements SurfaceHolder.Callba
     private int frameId;
     private int mCameraID;
 
+    public Activity act;
     public ImageView bgr;
+    public Bitmap bit;
     private Camera mCamera;
     private Camera.CameraInfo mCameraInfo;
+
+    public int save_flag = 0;
 
     private int mDisplayOrientation;
 
@@ -96,6 +107,7 @@ public class MyCameraPreview extends SurfaceView implements SurfaceHolder.Callba
         // empty. Take care of releasing the Camera preview in your activity.
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.FROYO)
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
         Log.d(TAG, "surfaceChanged");
         // If your preview can change or rotate, take care of those events here.
@@ -169,9 +181,14 @@ public class MyCameraPreview extends SurfaceView implements SurfaceHolder.Callba
     /**
      *  이미지 캡처
      */
-    public void takePicture(ImageView img){
-        this.bgr = img;
+    public void takePicture(Activity activity,int flag,Bitmap btm){
+        this.act = activity;
+        this.save_flag = flag;
+        this.bit = btm;
         mCamera.takePicture(shutterCallback, rawCallback, jpegCallback);
+    }
+    public Bitmap giveBitmap(){
+        return bit;
     }
 
     /**
@@ -200,64 +217,88 @@ public class MyCameraPreview extends SurfaceView implements SurfaceHolder.Callba
     private Camera.PictureCallback jpegCallback = new Camera.PictureCallback() {
         public void onPictureTaken(byte[] data, Camera camera) {
 
-            //이미지의 너비와 높이 결정
-            int w = camera.getParameters().getPictureSize().width;
-            int h = camera.getParameters().getPictureSize().height;
-            int orientation = calculatePreviewOrientation(mCameraInfo, mDisplayOrientation);
 
-            //Log.d("MyTag","이미지 캡처 시 -> orientation : " + orientation);
+                //이미지의 너비와 높이 결정
+                int w = camera.getParameters().getPictureSize().width;
+                int h = camera.getParameters().getPictureSize().height;
+                int orientation = calculatePreviewOrientation(mCameraInfo, mDisplayOrientation);
 
-            //byte array 를 bitmap 으로 변환
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-            Bitmap bitmap = BitmapFactory.decodeByteArray( data, 0, data.length, options);
+                //Log.d("MyTag","이미지 캡처 시 -> orientation : " + orientation);
 
-            //이미지를 디바이스 방향으로 회전
-            Matrix matrix = new Matrix();
+                //byte array 를 bitmap 으로 변환
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                Bitmap bitmap = BitmapFactory.decodeByteArray( data, 0, data.length, options);
 
-            /**
-             * 셀카 모드에는 저장 시 좌우 반전을 해줘야 한다.
-             */
-            if(mCameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-                //Log.d("MyTag","180도 추가 회전 후 좌우반전을 해줍니다.");
-                //orientation += 180;
-                matrix.setScale(-1,1);
-            }
+                //이미지를 디바이스 방향으로 회전
+                Matrix matrix = new Matrix();
 
-            matrix.postRotate(orientation);
-            bitmap =  Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, true);
+                /**
+                 * 셀카 모드에는 저장 시 좌우 반전을 해줘야 한다.
+                 */
+                if(mCameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+                    //Log.d("MyTag","180도 추가 회전 후 좌우반전을 해줍니다.");
+                    //orientation += 180;
+                    matrix.setScale(-1,1);
+                }
+
+                matrix.postRotate(orientation);
+                bitmap =  Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, true);
 
 
-            /**
-             * frameId 가 있는 경우 해당 이미지를 합성해 준다.
-             */
-            int width = bitmap.getWidth();
-            int height = bitmap.getHeight();
+                /**
+                 * frameId 가 있는 경우 해당 이미지를 합성해 준다.
+                 */
+                int width = bitmap.getWidth();
+                int height = bitmap.getHeight();
 
-            if(0 != frameId) {
+                if(0 != frameId) {
 
-                Bitmap bp = BitmapFactory.decodeResource(getContext().getResources(),frameId);
-                Bitmap resizeBp = Bitmap.createScaledBitmap(bp, width, height, true);
+                    Bitmap bp = BitmapFactory.decodeResource(getContext().getResources(),frameId);
+                    Bitmap resizeBp = Bitmap.createScaledBitmap(bp, width, height, true);
 
-                Canvas canvas = new Canvas(bitmap);
-                canvas.drawBitmap(resizeBp, 0f, 0f,null);
+                    Canvas canvas = new Canvas(bitmap);
+                    canvas.drawBitmap(resizeBp, 0f, 0f,null);
 
-            }
+                }
 
-            //bitmap 을  byte array 로 변환
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            byte[] currentData = stream.toByteArray();
+                //bitmap 을  byte array 로 변환
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                byte[] currentData = stream.toByteArray();
 
-            bgr.setImageBitmap(bitmap);//딱 캡쳐만 하는 부분
+//            bgr.setImageBitmap(bitmap);//딱 캡쳐만 하는 부분
 
-            //파일로 저장
-           // new MyCameraPreview.SaveImageTask().execute(currentData);
+                DisplayMetrics displayMetrics = act.getApplicationContext().getResources().getDisplayMetrics();
+
+                int width_d = displayMetrics.widthPixels;
+                int  height_d = displayMetrics.heightPixels;
+
+                CameraImageDialog camera_image_dialog = new CameraImageDialog(act,bitmap);
+
+
+                WindowManager.LayoutParams wm = camera_image_dialog.getWindow().getAttributes();
+                wm.copyFrom(camera_image_dialog.getWindow().getAttributes());
+
+                camera_image_dialog.show();
+
+
+               // new MyCameraPreview.SaveImageTask().execute(currentData);
+
+
+
+
 
         }
     };
 
-    /**
+
+
+
+
+
+
+/**
      * 이미지 저장을 위한 콜백 클래스
      */
     private class SaveImageTask extends AsyncTask<byte[], Void, Void> {
@@ -313,4 +354,6 @@ public class MyCameraPreview extends SurfaceView implements SurfaceHolder.Callba
         }
 
     }
+
+
 }

@@ -18,6 +18,7 @@ public class ARActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ar);
         cameratest=findViewById(R.id.btn_cameratest);
 
+
         cameratest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
