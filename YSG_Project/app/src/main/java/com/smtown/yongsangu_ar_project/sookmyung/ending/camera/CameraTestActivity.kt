@@ -20,11 +20,11 @@ import kotlinx.android.synthetic.main.activity_camera_test.*
 
 class CameraTestActivity:AppCompatActivity() {
     private val TAG = "MyTag"
+    var btn_flag = 0
 
     private val PERMISSIONS_REQUEST_CODE = 100
 
     private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-
     private var CAMERA_FACING = Camera.CameraInfo.CAMERA_FACING_FRONT
 
     private var myCameraPreview: MyCameraPreview? = null
@@ -108,7 +108,9 @@ class CameraTestActivity:AppCompatActivity() {
             CAMERA_FACING = Camera.CameraInfo.CAMERA_FACING_BACK
 
             cameraPreview.removeAllViews()
+
             startCamera()
+
 
         } else {
             CAMERA_FACING = Camera.CameraInfo.CAMERA_FACING_FRONT

@@ -62,9 +62,12 @@ public class MyCameraPreview extends SurfaceView implements SurfaceHolder.Callba
         try {
             // attempt to get a Camera instance
             mCamera = Camera.open(mCameraID);
+
         } catch (Exception e) {
             // Camera is not available (in use or does not exist)
             Log.e(TAG, "Camera is not available");
+
+
         }
 
 
@@ -96,12 +99,21 @@ public class MyCameraPreview extends SurfaceView implements SurfaceHolder.Callba
 
         } catch (IOException e) {
             Log.d(TAG, "Error setting camera preview: " + e.getMessage());
+           
         }
     }
 
     public void surfaceDestroyed(SurfaceHolder holder) {
         Log.d(TAG, "surfaceDestroyed");
         // empty. Take care of releasing the Camera preview in your activity.
+        //전,후면 카메라 전환시 꼭 필요한 부분
+        if (mCamera != null) {
+            mCamera.stopPreview();
+            mCamera.release();
+            mCamera = null;
+
+            holder.removeCallback(this);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.FROYO)

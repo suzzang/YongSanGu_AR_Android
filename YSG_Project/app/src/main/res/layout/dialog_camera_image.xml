@@ -14,16 +14,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-
-        <TextView
-            android:layout_alignParentBottom="true"
+        <LinearLayout
+            android:paddingBottom="30dp"
             android:layout_centerHorizontal="true"
-            android:id="@+id/btn_save"
-            android:background="#bcbcbc"
-
+            android:layout_alignParentBottom="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="저장"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_alignParentBottom="true"
+                android:id="@+id/btn_save"
+                android:background="#bcbcbc"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="저장하기"/>
+
+            <TextView
+                android:id="@+id/btn_retake"
+                android:layout_marginLeft="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+
+                android:background="#bcbcbc"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="다시찍기"/>
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 

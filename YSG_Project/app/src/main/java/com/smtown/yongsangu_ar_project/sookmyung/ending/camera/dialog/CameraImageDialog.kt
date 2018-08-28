@@ -12,6 +12,7 @@ import android.os.AsyncTask
 import android.os.Environment
 import android.util.Log
 import android.view.Window
+import android.widget.Toast
 import com.smtown.yongsangu_ar_project.R
 import com.smtown.yongsangu_ar_project.sookmyung.ending.camera.MyCameraPreview
 import kotlinx.android.synthetic.main.dialog_camera_image.*
@@ -30,10 +31,13 @@ class CameraImageDialog(activity: Activity, bitmap: Bitmap?) : Dialog(activity) 
 
         btn_save.setOnClickListener {
             saveBitmaptoJpeg(bitmap)
+            Toast.makeText(context,"저장되었습니다",Toast.LENGTH_SHORT).show()
             dismiss()
             activity.finish()
-            //저장되었습니다 토스트 메시지 띄우기
 
+        }
+        btn_retake.setOnClickListener {
+            dismiss()
         }
 
 
@@ -43,6 +47,7 @@ class CameraImageDialog(activity: Activity, bitmap: Bitmap?) : Dialog(activity) 
     /** * Image SDCard Save (input Bitmap -> saved file JPEG) * Writer intruder(Kwangseob Kim) * @param bitmap : input bitmap file * @param folder : input folder name * @param name : output file name  */
     fun saveBitmaptoJpeg(bitmap: Bitmap?) {
 
+        //비트맵을 바이트array로 바꾸는 부분
         val stream = ByteArrayOutputStream()
         bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, stream)
         val currentData = stream.toByteArray()
@@ -75,13 +80,6 @@ class CameraImageDialog(activity: Activity, bitmap: Bitmap?) : Dialog(activity) 
         } catch (exception: IOException) {
             Log.e("IOException", exception.message)
         }
-
-//        갤러리로 새로 "사진찍었어요" 하로 broadcasting 을하던지.
-//        sendBroadcast(new Intent("com.android.camera.NEW_PICTURE", mLastContentUri));
-
-       // "SD Card 다시 스캔 하세요", 라고 하면 되겠죠.
-
-        //sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED,Uri.parse ("file://" + Environment.getExternalStorageDirectory())))
 
 
     }
