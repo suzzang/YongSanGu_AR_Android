@@ -1,8 +1,8 @@
-package com.smtown.yongsangu_ar_project.sookmyung.ending.camera.dialog
+package com.smtown.yongsangu_ar_project.sookmyung.ending.reward.dialog
 
 import android.app.Activity
 import android.app.Dialog
-import android.content.ContentValues.TAG
+import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -12,32 +12,31 @@ import android.os.Environment
 import android.util.Log
 import android.view.Window
 import android.widget.Toast
+import com.smtown.yongsangu_ar_project.MainActivity
 import com.smtown.yongsangu_ar_project.R
+import com.smtown.yongsangu_ar_project.sookmyung.ar.ARActivity
 import com.smtown.yongsangu_ar_project.sookmyung.ending.reward.RewardInputActivity
 import kotlinx.android.synthetic.main.dialog_camera_image.*
+import kotlinx.android.synthetic.main.dialog_camera_reward.*
 import java.io.*
 
-class CameraImageDialog(activity: Activity, bitmap: Bitmap?) : Dialog(activity) {
+class RewardCameraDialog(activity: Activity, bitmap: Bitmap?) : Dialog(activity) {
 
     init {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        setContentView(R.layout.dialog_camera_image)
+        setContentView(R.layout.dialog_camera_reward)
         this.setCancelable(false) //뒤로가기,터치 무력화
-        captureimg.setImageBitmap(bitmap)
+       rewardimg.setImageBitmap(bitmap)
 
-        btn_save.setOnClickListener {
+        btn_reward_save.setOnClickListener {
             saveBitmaptoJpeg(bitmap)
-            Toast.makeText(context,"저장되었습니다",Toast.LENGTH_SHORT).show()
-            dismiss()
+            Toast.makeText(context,"저장되었습니다", Toast.LENGTH_SHORT).show()
 
-            val intent = Intent(context, RewardInputActivity::class.java) //저장을 하고나면 표창장 받는 부분으로 전환
+            dismiss()
+            val intent = Intent(context,MainActivity::class.java) //저장을 하고나면 표창장 받는 부분으로 전환
             activity.startActivity(intent)
-           // activity.finish()
 
-        }
-        btn_retake.setOnClickListener {
-            dismiss()
         }
 
 
@@ -66,7 +65,7 @@ class CameraImageDialog(activity: Activity, bitmap: Bitmap?) : Dialog(activity) 
             outStream.flush()
             outStream.close()
 
-            Log.d(TAG, "onPictureTaken - wrote bytes: " + currentData.size + " to "
+            Log.d(ContentValues.TAG, "onPictureTaken - wrote bytes: " + currentData.size + " to "
                     + outputFile.absolutePath)
 
 
