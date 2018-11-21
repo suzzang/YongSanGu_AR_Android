@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="SoonheonTube" size="500.000000 517.322083" />
+    <ImageTarget name="MeltingGrill" size="1000.000000 228.456909" />
+  </Tracking>
+</QCARConfig>

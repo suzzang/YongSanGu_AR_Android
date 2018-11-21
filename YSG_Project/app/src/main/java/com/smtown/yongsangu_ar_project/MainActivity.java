@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity{
 
     TextView map_sook;
     TextView map_hyo;
-
+    public String msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,12 @@ public class MainActivity extends AppCompatActivity{
         map_sook.setOnClickListener(new View.OnClickListener() { //구현중
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(MainActivity.this, FirstIntroActivity.class);
+//                Intent intent1 = new Intent(MainActivity.this, UnityPlayerActivity.class);
+//                startActivity(intent1);
+
+                Intent intent1 = new Intent(MainActivity.this, com.smtown.yongsangu_ar_project.UnityPlayerActivity.class);
+                msg = "FindPark";
+                intent1.putExtra("scene",msg);
                 startActivity(intent1);
             }
         });
@@ -36,6 +41,10 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View view) {
                 //Intent intent1 = new Intent(MainActivity.this, FirstIntroActivity.class);
                 //startActivity(intent1);
+                Intent intent2 = new Intent(MainActivity.this, com.smtown.yongsangu_ar_project.UnityPlayerActivity.class);
+                msg = "HyochangIntro";
+                intent2.putExtra("scene",msg);
+                startActivity(intent2);
             }
         });
 
