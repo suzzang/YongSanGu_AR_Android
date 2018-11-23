@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".splash.ProgressActivity"
+    android:background="@drawable/main_background">
+    <ImageView
+        android:id="@+id/main_logo"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/logo"/>
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        tools:text="본 게임은 실제 역사를 바탕으로 한 허구적인 이야기를 담고있습니다."
+        android:background="@drawable/loading_rubric"
+        />
+
+    <ProgressBar
+        android:id="@+id/main_progressBar"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/main_logo"
+        android:layout_centerHorizontal="true"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/progressbar_custom"
+        android:max="100"
+        android:progress="5"
+        android:layout_width="230dp"
+        android:layout_height="30dp" />
+
+
+</RelativeLayout>

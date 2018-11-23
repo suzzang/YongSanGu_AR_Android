@@ -4,23 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sookmyung.intro.SecondIntroActivity">
+    tools:context=".sookmyung.intro.SecondIntroActivity"
+    android:background="@drawable/background_queen">
 
     <ImageView
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/secondintro"/>
-    <TextView
+        android:src="@drawable/queen"/>
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <ImageView
+            android:id="@+id/queen_chat"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chat_2"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/queen_namecard"/>
+    </RelativeLayout>
+
+    <ImageView
         android:id="@+id/btn_next_secondintro"
-        android:background="#bcbcbc"
+        android:background="@drawable/arrow_right_black"
         android:gravity="center"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="NEXT"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/btn_before_secondintro"
+        android:background="@drawable/arrow_left_black"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

@@ -39,7 +39,7 @@ class CameraTestActivity:AppCompatActivity() {
     setContentView(R.layout.activity_camera_test)
 
         btnCapture.setOnClickListener {
-            myCameraPreview?.setFrameId(R.drawable.camerabgr)
+            myCameraPreview?.setFrameId(R.drawable.queen_park_photo)
             myCameraPreview?.takePicture(this)
 
 
@@ -62,7 +62,7 @@ class CameraTestActivity:AppCompatActivity() {
 //        }
 
         //액자 깔리는 부분
-        ivFrameSet.setImageResource(R.drawable.camerabgr)
+        ivFrameSet.setImageResource(R.drawable.queen_park_photo)
 
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

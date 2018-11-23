@@ -9,6 +9,8 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Window;
 
+import com.smtown.yongsangu_ar_project.sookmyung.ending.camera.CameraTestActivity;
+import com.smtown.yongsangu_ar_project.sookmyung.ending.reward.RewardInputActivity;
 import com.unity3d.player.*;
 
 public class UnityPlayerActivity extends Activity
@@ -21,11 +23,12 @@ public class UnityPlayerActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        //게임 갈래 구분하는 곳///////
         Intent intent = getIntent();
 
-
         msg = intent.getStringExtra("scene");
-        Log.d("하 씨불",msg);
+        ////////////////////////
+
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
@@ -35,12 +38,20 @@ public class UnityPlayerActivity extends Activity
         mUnityPlayer.requestFocus();
     }
 
-    public void GetSceneName(){
+    public void GetSceneName(){ //숙대맵인지, 효창맵인지 구분하는 함수
 
-            Log.d("하 씨불","좆같네"+msg);
             UnityPlayer.UnitySendMessage("AndroidManager","ChangeScene",msg);
 
 
+    }
+
+    public static void CallActivity(Activity activity){ //숙대맵 - 사진찍기
+        Intent intent = new Intent(activity,CameraTestActivity.class);
+        activity.startActivity(intent);
+    }
+    public static void CallActivity2(Activity activity){//숙대맵 - 표창창부분 정보 입력하기
+        Intent intent = new Intent(activity,RewardInputActivity.class);
+        activity.startActivity(intent);
     }
 
     @Override

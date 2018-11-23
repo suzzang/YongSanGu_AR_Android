@@ -9,6 +9,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.TextView;
 
@@ -40,7 +41,7 @@ public class RewardActivity extends AppCompatActivity {
 
         TextView r_date = findViewById(R.id.tv_r_date);
 
-        TextView btn_camera = findViewById(R.id.btn_smreward_camera);
+        ImageView btn_camera = findViewById(R.id.btn_smreward_camera);
 
         Intent intent1 = getIntent();
 

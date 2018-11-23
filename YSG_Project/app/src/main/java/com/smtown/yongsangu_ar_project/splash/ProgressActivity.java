@@ -1,0 +1,47 @@
+package com.smtown.yongsangu_ar_project.splash;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ProgressBar;
+
+import com.smtown.yongsangu_ar_project.MainActivity;
+import com.smtown.yongsangu_ar_project.R;
+
+public class ProgressActivity extends AppCompatActivity {
+    private static int progress_percent;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_progress);
+        progress_percent = 0;
+
+        final Intent intent = new Intent(ProgressActivity.this, MainActivity.class);
+
+        new Thread() {
+            public void run() {
+                while (true) {
+                    try {
+                        while (!Thread.currentThread().isInterrupted()) {
+                            progress_percent += 15;
+                            Thread.sleep(1000);
+                            ProgressBar progress = findViewById(R.id.main_progressBar);
+                            progress.setProgress(progress_percent);
+
+                            if (progress_percent >= 100) {
+                                startActivity(intent);
+                                finish();
+                                currentThread().interrupt();
+                            }
+                        }
+                    } catch (Throwable t) {
+
+                    } finally {
+
+                    }
+                }
+            }
+        }.start();
+    }
+}

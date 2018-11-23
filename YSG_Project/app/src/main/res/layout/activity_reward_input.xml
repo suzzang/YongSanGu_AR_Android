@@ -4,29 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_queen"
     tools:context=".sookmyung.ending.reward.RewardInputActivity">
+
+    <ImageView
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/smu_name_paper_48" />
     <RelativeLayout
         android:id="@+id/reward_layout"
         android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="283dp"
+        android:layout_height="228dp">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="310dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/reward_bgr" />
-        <TextView
-            android:id="@+id/tv_reward"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="130dp"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:text="숙명을 위해 힘써준 그대에게 표창장을 드리니, 이름과 소속을 밝혀주시길 바라오.
-"/>
         <RelativeLayout
-            android:layout_below="@+id/tv_reward"
+            android:layout_marginBottom="40dp"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -35,29 +29,39 @@
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
+                android:fontFamily="@font/font_ebs_b"
+                android:textSize="18sp"
+                android:textColor="#282828"
                 android:text="이름"/>
             <EditText
                 android:id="@+id/et_smreward_name"
                 android:layout_toRightOf="@+id/tv_name"
                 android:layout_width="150dp"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:hint="눈송이"
-                android:textSize="10dp"/>
+                android:fontFamily="@font/font_ebs_b"
+                android:backgroundTint="#ffffff"
+                android:textSize="15sp"/>
             <TextView
                 android:id="@+id/tv_depart"
                 android:gravity="center_vertical"
                 android:layout_below="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
+                android:fontFamily="@font/font_ebs_b"
+                android:textColor="#282828"
+                android:textSize="18sp"
                 android:text="소속"/>
             <EditText
                 android:id="@+id/et_smreward_depart"
                 android:layout_toRightOf="@+id/tv_depart"
                 android:layout_below="@+id/tv_name"
                 android:layout_width="150dp"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#ffffff"
                 android:hint="숙명여자대학교"
-                android:textSize="10dp"/>
+                android:fontFamily="@font/font_ebs_b"
+                android:textSize="15sp"/>
         </RelativeLayout>
 
 

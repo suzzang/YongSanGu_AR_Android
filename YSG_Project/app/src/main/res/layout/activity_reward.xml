@@ -4,88 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_queen"
     tools:context=".sookmyung.ending.reward.RewardActivity">
     <RelativeLayout
         android:id="@+id/real_reward_layout"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
-        android:layout_height="310dp">
+        android:layout_height="385dp">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="310dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:src="@drawable/reward_bgr_r" />
+            android:src="@drawable/smu_certificate" />
 
 
         <LinearLayout
-            android:paddingTop="40dp"
-            android:layout_centerInParent="true"
+            android:layout_marginTop="100dp"
+            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="표창장"/>
+
 
             <TextView
-                android:layout_gravity="right"
-                android:layout_alignParentRight="true"
                 android:id="@+id/tv_r_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:lineSpacingExtra="11sp"
+
                 android:text="이름"/>
 
             <TextView
-                android:layout_gravity="right"
                 android:id="@+id/tv_r_depart"
-                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="숙명여자대학교"/>
 
-            <TextView
-                android:layout_width="250dp"
-                android:textSize="11dp"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:text="위 사람은 순헌황귀비를 도와 여성인재의 산실인 숙명을 지켜내었기에 그 노고에 감사드리며 이 증서를 드립니다.
-"/>
-            <TextView
-                android:id="@+id/tv_r_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="dd"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="淑明女子大學校"/>
 
         </LinearLayout>
 
-        <ImageView
-            android:layout_marginRight="70dp"
-            android:layout_marginBottom="55dp"
+        <TextView
+            android:layout_marginBottom="80dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/stamp"/>
-
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tv_r_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dd"/>
 
     </RelativeLayout>
-    <TextView
-
+    <ImageView
         android:id="@+id/btn_smreward_camera"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/real_reward_layout"
-        android:background="#bcbcbc"
+        android:background="@drawable/savebutton"
         android:gravity="center"
-        android:layout_width="70dp"
-        android:layout_height="40dp"
-        android:text="캡쳐"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

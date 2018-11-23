@@ -4,24 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sookmyung.intro.FirstIntroActivity">
+    tools:context=".sookmyung.intro.FirstIntroActivity"
+    android:background="@drawable/background_queen"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp">
 
     <ImageView
 
         android:layout_centerInParent="true"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/sook"/>
-    <TextView
+        android:src="@drawable/paper_1"/>
+    <ImageView
         android:id="@+id/btn_next_firstintro"
-        android:background="#bcbcbc"
+        android:src="@drawable/arrow_right"
         android:gravity="center"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="NEXT"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

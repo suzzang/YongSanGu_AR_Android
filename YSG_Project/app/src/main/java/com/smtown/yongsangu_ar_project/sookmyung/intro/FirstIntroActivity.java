@@ -1,15 +1,17 @@
 package com.smtown.yongsangu_ar_project.sookmyung.intro;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smtown.yongsangu_ar_project.R;
 
 public class FirstIntroActivity extends AppCompatActivity {
-    TextView next1;
+    ImageView next1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
