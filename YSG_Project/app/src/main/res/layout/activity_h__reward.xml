@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_queen"
+    tools:context=".hyochang.ending.reward.H_RewardActivity">
+    <RelativeLayout
+        android:id="@+id/h_real_reward_layout"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="385dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/hc_certificate" />
+
+
+        <LinearLayout
+            android:layout_marginTop="100dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/h_tv_r_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="11sp"
+
+                android:text="이름"/>
+
+            <TextView
+                android:id="@+id/h_tv_r_depart"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="숙명여자대학교"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginBottom="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/h_tv_r_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dd"/>
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/h_btn_smreward_camera"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/h_real_reward_layout"
+        android:background="@drawable/savebutton"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

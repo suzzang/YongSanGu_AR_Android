@@ -48,22 +48,17 @@
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
             android:hardwareAccelerated="false"
             android:launchMode="singleTask" />
-        <activity android:name=".splash.SplashActivity" >
+        <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".sookmyung.intro.FirstIntroActivity">
-
-        </activity>
+        <activity android:name=".sookmyung.intro.FirstIntroActivity" />
         <activity android:name=".sookmyung.intro.SecondIntroActivity" />
         <activity android:name=".sookmyung.intro.ThirdIntroActivity" />
-        <activity android:name=".sookmyung.ar.ARActivity" >
-
-        </activity>
+        <activity android:name=".sookmyung.ar.ARActivity" />
         <activity android:name=".sookmyung.ending.camera.CameraTestActivity" />
 
         <provider
@@ -79,6 +74,10 @@
         <activity android:name=".sookmyung.ending.reward.RewardInputActivity" />
         <activity android:name=".sookmyung.ending.reward.RewardActivity" />
         <activity android:name=".splash.ProgressActivity" />
+        <activity android:name=".hyochang.ending.reward.H_RewardInputActivity" />
+        <activity android:name=".hyochang.ending.reward.H_RewardActivity"></activity>
+
+        <activity android:name=".hyochang.ending.camera.H_CameraTestActivity"/>
     </application>
 
 </manifest>

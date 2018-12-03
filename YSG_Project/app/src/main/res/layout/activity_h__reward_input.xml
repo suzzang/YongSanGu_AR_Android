@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_queen"
+    tools:context=".hyochang.ending.reward.H_RewardInputActivity">
+
+    <ImageView
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/combined_shape" />
+    <RelativeLayout
+        android:id="@+id/h_reward_layout"
+        android:layout_centerInParent="true"
+        android:layout_width="283dp"
+        android:layout_height="228dp">
+
+        <RelativeLayout
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/h_tv_name"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:fontFamily="@font/font_ebs_b"
+                android:textSize="18sp"
+                android:textColor="#282828"
+                android:text="이름"/>
+            <EditText
+                android:id="@+id/h_et_smreward_name"
+                android:layout_toRightOf="@+id/h_tv_name"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:hint="눈송이"
+                android:fontFamily="@font/font_ebs_b"
+                android:backgroundTint="#ffffff"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/h_tv_depart"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/h_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:fontFamily="@font/font_ebs_b"
+                android:textColor="#282828"
+                android:textSize="18sp"
+                android:text="소속"/>
+            <EditText
+                android:id="@+id/h_et_smreward_depart"
+                android:layout_toRightOf="@+id/h_tv_depart"
+                android:layout_below="@+id/h_tv_name"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#ffffff"
+                android:hint="숙명여자대학교"
+                android:fontFamily="@font/font_ebs_b"
+                android:textSize="15sp"/>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/h_btn_smreward_input"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/h_reward_layout"
+        android:background="#bcbcbc"
+        android:gravity="center"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:text="입력"/>
+
+</RelativeLayout>

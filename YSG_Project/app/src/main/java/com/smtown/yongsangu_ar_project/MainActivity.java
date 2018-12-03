@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.smtown.yongsangu_ar_project.hyochang.ending.camera.H_CameraTestActivity;
 import com.smtown.yongsangu_ar_project.sookmyung.intro.FirstIntroActivity;
 import com.smtown.yongsangu_ar_project.splash.SplashActivity;
 
@@ -30,6 +31,10 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View view) {
                 Intent intent1 = new Intent(MainActivity.this, FirstIntroActivity.class);
                 startActivity(intent1);
+
+
+
+
 //
 //                Intent intent1 = new Intent(MainActivity.this, com.smtown.yongsangu_ar_project.UnityPlayerActivity.class);
 //                msg = "FindPark";
@@ -43,9 +48,15 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View view) {
                 //Intent intent1 = new Intent(MainActivity.this, FirstIntroActivity.class);
                 //startActivity(intent1);
-                Intent intent2 = new Intent(MainActivity.this, com.smtown.yongsangu_ar_project.UnityPlayerActivity.class);
-                msg = "HyochangIntro";
-                intent2.putExtra("scene",msg);
+
+
+                //진짜
+               // Intent intent2 = new Intent(MainActivity.this, com.smtown.yongsangu_ar_project.UnityPlayerActivity.class);
+               // msg = "HyochangIntro";
+               // intent2.putExtra("scene",msg);
+               // startActivity(intent2);
+
+                Intent intent2 = new Intent(MainActivity.this, H_CameraTestActivity.class);
                 startActivity(intent2);
             }
         });
