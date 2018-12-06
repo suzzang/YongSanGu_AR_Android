@@ -7,11 +7,9 @@ import android.widget.ProgressBar;
 
 import com.smtown.yongsangu_ar_project.MainActivity;
 import com.smtown.yongsangu_ar_project.R;
-import com.smtown.yongsangu_ar_project.UnityPlayerActivity;
 
 public class ProgressActivity extends AppCompatActivity {
     private static int progress_percent;
-    public String msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +17,7 @@ public class ProgressActivity extends AppCompatActivity {
         setContentView(R.layout.activity_progress);
         progress_percent = 0;
 
-      //  final Intent intent = new Intent(ProgressActivity.this, MainActivity.class);
-        final Intent intent = new Intent(ProgressActivity.this,UnityPlayerActivity.class);
-        msg = "FindPark";
-        intent.putExtra("scene",msg);
+        final Intent intent = new Intent(ProgressActivity.this, MainActivity.class);
 
         new Thread() {
             public void run() {
