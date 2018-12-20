@@ -9,6 +9,8 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Window;
 
+import com.smtown.yongsangu_ar_project.hyochang.ending.camera.H_CameraTestActivity;
+import com.smtown.yongsangu_ar_project.hyochang.ending.reward.H_RewardInputActivity;
 import com.smtown.yongsangu_ar_project.sookmyung.ending.camera.CameraTestActivity;
 import com.smtown.yongsangu_ar_project.sookmyung.ending.reward.RewardInputActivity;
 import com.unity3d.player.*;
@@ -51,6 +53,14 @@ public class UnityPlayerActivity extends Activity
     }
     public static void CallActivity2(Activity activity){//숙대맵 - 표창창부분 정보 입력하기
         Intent intent = new Intent(activity,RewardInputActivity.class);
+        activity.startActivity(intent);
+    }
+    public static void CallActivity3(Activity activity){ //효창맵 - 사진찍기
+        Intent intent = new Intent(activity,H_CameraTestActivity.class);
+        activity.startActivity(intent);
+    }
+    public static void CallActivity4(Activity activity){//효창맵 - 표창창부분 정보 입력하기
+        Intent intent = new Intent(activity,H_RewardInputActivity.class);
         activity.startActivity(intent);
     }
 
