@@ -1,5 +1,6 @@
 package com.smtown.yongsangu_ar_project;
 
+import android.app.Application;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.Image;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.smtown.bgm.Game_Main_Bgm;
 import com.smtown.yongsangu_ar_project.hyochang.ending.camera.H_CameraTestActivity;
@@ -37,9 +39,11 @@ public class MainActivity extends AppCompatActivity{
         map_sook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent1 = new Intent(MainActivity.this, FirstIntroActivity.class);
-                startActivity(intent1);
+                Toast.makeText(MainActivity.this, "숙대맵은 아직 서비스 중입니다:)", Toast.LENGTH_SHORT).show();
+                //진짜 부분
+//
+//                Intent intent1 = new Intent(MainActivity.this, FirstIntroActivity.class);
+//                startActivity(intent1);
 
 
 //

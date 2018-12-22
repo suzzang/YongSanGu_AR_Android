@@ -1,6 +1,7 @@
 *.iml
 *.apk
 output.json
+*.zip
 .gradle
 /local.properties
 /.idea/libraries
